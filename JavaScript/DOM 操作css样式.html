@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8" />
+	<title>js</title>
+	<style type='text/css'>
+		#box1{
+			width:200px;
+			height: 200px;
+			background-color: red;
+			padding :10px;
+			border:1px solid #000;
+		}
+
+		#info{
+			width: 300px;
+			height: 500px;
+			background-color: #bfa;
+			/*添加滚动条*/
+			overflow: auto;
+		}
+	</style>
+ 	<script type="text/javascript">
+ 		window.onload = function(){
+ 			// 要求1.点击按钮，修改box大小
+ 			var btn01 = document.getElementById('btn01');
+ 			var box1 = document.getElementById('box1');
+
+ 			btn01.onclick = function(){
+ 				box1.style.width = "300px";
+ 				box1.style.height = "300px";
+ 				box1.style.backgroundColor = "green";
+ 			};
+
+ 			// 要求2. 点击按钮，读取样式---getComputedStyle()
+ 			var btn02 = document.getElementById('btn02');
+ 			btn02.onclick = function(){
+ 				console.log('width',getComputedStyle(box1,null).width);
+ 				console.log('height',getComputedStyle(box1,null).height);
+ 				console.log('backgroundColor',getComputedStyle(box1,null).backgroundColor);
+ 			};
+
+ 			// 要求3. 特殊属性的样式
+ 			var btn03 = document.getElementById('btn03');
+ 			btn03.onclick = function(){
+ 				// 可见宽度和高度，包括内容区和内边距，不包括边框，返回值不带px
+ 				console.log('clientWidth',box1.clientWidth);
+ 				console.log('clientHeight',box1.clientHeight);
+
+ 				//以下两个元素获取元素整个大小，包括内容区、内边距和边框 
+ 				console.log('offsetWidth',box1.offsetWidth);
+ 				console.log('offsetHeight',box1.offsetHeight);
+
+ 				//会获取到离当前元素最近的开启了定位的祖先元素
+ 				console.log('offsetParent ',box1.offsetParent);
+
+ 				// 获取当前元素相对于其定位元素的水平偏移量
+ 				console.log('offsetLeft ',box1.offsetLeft);
+ 				console.log('offsetTop ',box1.offsetTop);
+ 			};
+
+ 			// 小实例--必需滑动滚动条，滑动到最后阅读完毕才能提交
+ 			// 当垂直滚动条滚动到底时使表单项可用
+ 			var info = document.getElementById('info');
+ 			var inputItem = document.getElementsByTagName('input');
+
+ 			// 为info绑定滚动事件
+ 			info.onscroll = function(){
+ 				// 判断滚动到底
+ 				if(info.scrollHeight - info.scrollTop == info.clientHeight){
+ 					// 设置表单项可用
+ 					inputItem[0].disabled = false;
+ 				}	
+ 			};
+ 		};
+
+
+ 		
+	</script>
+</head>
+<body>
+	<button id='btn01'>update</button>
+	<button id='btn02'>get</button>
+	<button id='btn03'>special</button>
+
+	<br>
+	<br>
+	<div id='box2' style="position: relative;">
+		<div id='box1'></div>
+	</div>
+	<br>
+
+	<!-- 小实例 -->
+	下面是个小实例，必需滑动滚动条，滑动到最后阅读完毕才能提交。
+	<div>
+		<h3> 欢迎注册</h3>
+		<p id='info'>
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+			亲爱的用户请您认真阅读注册条款
+		</p>
+		<input type="checkbox" disabled="disabled">我已仔细阅读协议,并同意协议要求
+		<input type="submit" value='注册'>
+	</div>
+	
+</body>
+</html>

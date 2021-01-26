@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8" />
+	<title>js-滑动滚动条，获取到当前的x和y坐标，并显示</title>
+	<style type='text/css'>
+		#areaDiv{
+			width: 300px;
+			height: 100px;
+			border:1px solid #000;
+		}
+		#showMsg{
+			width: 300px;
+			height: 30px;
+			border:1px solid #000;
+		}
+	</style>
+ 	<script type="text/javascript">
+ 		window.onload = function(){
+ 			/*
+ 			当鼠标在areaDiv中移动时，在showMsg中显示鼠标的坐标
+ 			*/
+ 			// 1 先获取两个Div
+ 			var areaDiv = document.getElementById('areaDiv');
+ 			var showMsg = document.getElementById('showMsg');
+
+ 			// 2 当鼠标在areaDiv中移动时，事件才触发
+ 			areaDiv.onmousemove = function(event){
+ 				// 在showMsg中显示坐标
+ 				// console.log('X:'+event.clientX +', Y:' + event.clientY);
+ 				var x = event.clientX;
+ 				var y = event.clientY;
+ 				showMsg.innerHTML = '(X:'+ x+', Y:' + y +')';
+ 			};
+
+ 		};		
+	</script>
+</head>
+<body>
+	<!-- 小实例 -->
+	下面是个小实例，滑动滚动条，获取到当前的x和y坐标，并显示。
+	<br>
+	<br>
+	<div id='areaDiv'></div>
+	<br>
+	<div id='showMsg'></div>
+</body>
+</html>

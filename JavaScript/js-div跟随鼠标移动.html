@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8" />
+	<title>js-div跟随鼠标移动</title>
+	<style type='text/css'>
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			border:1px solid #000;
+			/*如果想设置位置，一定要开启定位*/
+			position: absolute;
+		}
+	</style>
+ 	<script type="text/javascript">
+ 		window.onload = function(){
+ 			/*
+ 			使得div随着鼠标移动
+ 			*/
+ 			// 1 先获取box1
+ 			var box1 = document.getElementById('box1');
+
+ 			// 2 绑定鼠标移动事件
+ 			document.onmousemove = function(event){
+ 				// 2.1获取鼠标坐标
+ 				// event.pageX / pageY 获取鼠标相对于当前页面的坐标
+ 				var left = event.pageX;
+ 				var top = event.pageY;
+ 				// 2.2设置div的偏移量
+ 				box1.style.left = left + 'px';
+ 				box1.style.top = top + 'px';
+ 			};
+ 		};		
+
+	</script>
+</head>
+<body style='height:1000px;'>
+	<!-- 小实例 -->
+	下面是个小实例，div跟随鼠标移动。
+	<br>
+	<br>
+	<div id='box1'></div>
+</body>
+</html>

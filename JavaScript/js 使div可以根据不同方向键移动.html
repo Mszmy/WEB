@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8" />
+	<title>js</title>
+	<style type='text/css'>
+		#box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+ 	<script type="text/javascript">
+ 		window.onload = function(){
+ 			/*
+ 			* 使div可以根据不同方向键移动
+ 			*/
+ 			document.onkeydown = function(event){
+ 				event = event || window.event;
+ 				console.log(event.keyCode);
+
+ 				var speed = 10;
+
+ 				switch(event.keyCode){
+ 					case 37 :
+	 					// 左
+	 					console.log('zuo');
+	 					box1.style.left = box1.offsetLeft - speed+'px';
+	 					break;
+	 				case 38 :
+	 					// 上
+ 						console.log('shang');
+	 					box1.style.top = box1.offsetTop - speed+'px';
+
+ 						break;
+ 					case 39 :
+ 						// 右
+ 						console.log('you');
+	 					box1.style.left = box1.offsetLeft + speed+'px';
+
+ 						break;
+ 					case 40 :
+ 						// 下
+ 						console.log('xia');
+	 					box1.style.top =  box1.offsetTop + speed+'px';
+
+ 						break;
+ 					default :
+ 						break;
+
+ 				}
+ 			};
+ 				
+ 		};
+	</script>
+</head>
+<body>
+	<div id='box1'></div> 
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch 发送 AJAX 请求</title>
+    <script>
+        window.onload = function () {
+            const btn = document.querySelector('button');
+            btn.onclick = function () {
+                //fetch(url,配置[可选])
+                fetch('http://127.0.0.1:8000/fetch-server',{
+                    //请求方法：
+                    method:'POST',
+                    // 请求头
+                    headers:{
+                        name:'zmy',
+                    },
+                    //请求体
+                    body:'usrname=admin&password=admin',
+                }).then(response=>{
+                    console.log(response)
+                });
+            };
+        };
+    </script>
+</head>
+<body>
+<button>fetch ajax请求</button>
+
+</body>
+</html>

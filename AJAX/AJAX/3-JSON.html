@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX JSON 响应</title>
+    <style>
+        #result{
+            width: 200px;
+            height:100px;
+            border: solid 1px #9900bb;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // 获取元素对象
+            const result = document.getElementById('result');
+            window.onkeydown = function () {
+                //1发送请求
+                const xhr = new XMLHttpRequest();
+                //2222自动转换----设置响应体的类型---
+                xhr.responseType = 'json';
+
+                //2初始化
+                xhr.open('GET','http://127.0.0.1:8000/json-server');
+                //3发送
+                xhr.send();
+                //4事件绑定
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState == 4){
+                        if(xhr.status >=200 && xhr.status <300){
+                            // 处理服务端返回的结果  xhr.response为服务端返回的响应体
+                            // result.innerHTML = xhr.response;
+
+                            //111 手动转换----手动对服务器端返回的响应体进行数据转换-----即将对象字符串转换为对象---
+                            // let data = JSON.parse(xhr.response);
+                            // console.log(data)
+                            // result.innerHTML = data.name;
+
+
+                            //2222 自动转换----接上面设置响应体的类型---xhr.responseType = 'json';----
+                            console.log(xhr.response)
+                            result.innerHTML = xhr.response.name;
+                        }
+                    }
+                };
+            };
+        };
+    </script>
+</head>
+<body>
+<div id="result"></div>
+</body>
+</html>

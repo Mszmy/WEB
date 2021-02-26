@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX 请求超时与网络异常提醒</title>
+    <style>
+        #result{
+            width: 200px;
+            height:100px;
+            border: solid 1px #9900bb;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // 获取元素对象
+            const result = document.getElementById('result');
+            const btn = document.getElementsByTagName('button')[0];
+            btn.onclick = function () {
+                // console.log('start')
+                const xhr = new XMLHttpRequest();
+
+                //超时设置
+                xhr.timeout = 2000;// 即如果超过2s了，还没有反应就cancel 取消
+                //超时回调
+                xhr.ontimeout = function(){
+                    alert('请稍后重试...')
+                }
+
+                //网络异常的回调函数
+                xhr.onerror = function(){
+                    alert('你的网络似乎出现了一些问题...')
+                }
+                xhr.open('GET','http://127.0.0.1:8000/delay');
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState == 4){
+                        if(xhr.status>=200 && xhr.status<300){
+                            result.innerHTML = xhr.response;
+                        }
+                    }
+
+                };
+            };
+        };
+    </script>
+</head>
+<body>
+<button>点击发送请求</button>
+<div id="result"></div>
+</body>
+</html>

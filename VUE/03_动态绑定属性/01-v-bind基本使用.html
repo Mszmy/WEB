@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<!--
+v-bind
+   - 可动态绑定属性
+   - 缩写 : （一个英文冒号）
+-->
+<div id="test">
+    <img v-bind:src="imageURL" alt=""/>
+    <a :href="aHref">百度</a>
+
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            imageURL:"https://avatar-static.segmentfault.com/221/455/2214556896-5c95c940c2c52_huge128",
+            aHref:'https://www.baidu.com',
+        },
+    })
+</script>
+
+</body>
+</html>

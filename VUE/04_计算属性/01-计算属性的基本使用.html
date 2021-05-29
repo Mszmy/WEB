@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性的基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    {{fullName}}
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            firstName:'yiyang',
+            lastName:'qianxi'
+        },
+        // 计算属性
+        computed:{
+            fullName(){
+                return this.firstName +' ' + this.lastName;
+            },
+        }
+    })
+</script>
+
+</body>
+</html>

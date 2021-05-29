@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind动态绑定style--对象方法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<style>
+</style>
+<body>
+<!--
+    - <h2 :style="{css属性名:属性值}"></h2>
+-->
+<div id="test">
+    <h2 :style="{fontSize:finalSize + 'px',backgroundColor:finalColor}">{{message}}</h2>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+            finalSize: 100,
+            finalColor:'red'
+        }
+    })
+</script>
+
+</body>
+</html>

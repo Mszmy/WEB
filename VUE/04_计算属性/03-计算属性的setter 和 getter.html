@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性的setter 和 getter</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    {{FullName}}
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            firstName:'Kobe',
+            lastName:'Bryant',
+        },
+        computed:{
+            // ----- 函数-------
+            // FullName(){
+            //     return this.firstName + ' ' + this.lastName
+            // },
+
+            //  ------ 属性----get 和 set 方法---
+            FullName:{
+                set(newValue){
+
+                },
+                get(){
+                    return this.firstName + ' ' + this.lastName
+                },
+            }
+
+        },
+    })
+</script>
+
+</body>
+</html>

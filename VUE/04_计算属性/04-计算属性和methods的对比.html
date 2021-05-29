@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性和methods的对比</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+<!--    1 直接拼接-->
+    <p>{{firstName +' ' +  lastName}}</p>
+
+<!--    2 methods -->
+    <p> {{getFullName()}}</p>
+
+<!--    3 computed -->
+    <p>{{FullName}}</p>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            firstName:'Kobe',
+            lastName:'Bryant',
+        },
+        methods:{
+            getFullName(){
+                return this.firstName + ' ' + this.lastName
+            },
+        },
+        computed:{
+            FullName:{
+                get(){
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

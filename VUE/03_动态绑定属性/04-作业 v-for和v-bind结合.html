@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for和v-bind的结合</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<style>
+    .active{
+        color:red;
+    }
+
+</style>
+<body>
+<!--
+点击谁，谁的字体样式变成红色
+-->
+<div id="test">
+    <ul>
+        <li :class="{active:index == isActive}" v-on:click="btn(index)" v-for="(movie,index) in movies" >{{movie}}</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            movies:['海尔兄弟','火影忍者','进击的巨人'],
+            isActive:false,
+        },
+        methods:{
+            btn:function (index) {
+                this.isActive = index
+            },
+        },
+    })
+</script>
+
+</body>
+</html>

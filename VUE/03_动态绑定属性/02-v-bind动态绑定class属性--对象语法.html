@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind动态绑定class属性--对象语法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<style>
+    .active{
+        color:red;
+    }
+    .line{
+        font-size: 50px;
+    }
+</style>
+<body>
+<!--
+v-bind
+   - 可动态绑定属性
+   - <h2 v-bind:class="{类名1:true, 类名2: boolean}"></h2>
+-->
+<div id="test">
+<!--    <h2 :class="active">{{message}}</h2>-->
+    <h2 :class="{active:isActive,line:isLine}">{{message}}</h2>
+    <button v-on:click="classBtn">切换样式</button>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+            active:'active',
+            isActive:true,
+            isLine:true,
+        },
+        methods:{
+            classBtn:function () {
+                this.isActive  = !this.isActive
+            },
+        },
+    })
+</script>
+
+</body>
+</html>

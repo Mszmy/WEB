@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue入门</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="test">
+    <ul>
+        <li v-for = 'name in movies'>{{name}}</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({ // 配置对象
+        el:'#test', // element 选择器
+        data:{
+            message:'movies',
+            movies:['zmy','zzz','wty','wlx']
+        }
+    })
+</script>
+
+</body>
+</html>

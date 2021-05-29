@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计数器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="test">
+    <h2>当前计数:{{counter}}</h2>
+    <button v-on:click="addco">+</button>
+    <button v-on:click="subco">-</button>
+
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({ // 配置对象
+        el:'#test', // element 选择器
+        data:{
+            counter:0,
+        },
+        methods:{
+            addco(){
+                this.counter++;
+            },
+            subco(){
+                if(this.counter==0)this.counter = 0
+                else this.counter--;
+            },
+        },
+    })
+</script>
+
+</body>
+</html>

@@ -2,37 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>v-for和v-bind的结合</title>
+    <title>vue入门</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
-<style>
-    .active{
-        color:red;
-    }
-
-</style>
 <body>
 <!--
-点击谁，谁的字体样式变成红色
+1. 引入vue.js
+2. 创建Vue对象
+    el：指定根element（选择器）
+    data：初始化数据（页面可以访问）
+3. 双向数据绑定 ： v-model
+4  显示数据 ： {{xxx}}
+5. 理解vue的mvvm实现
 -->
+
 <div id="test">
-    <ul>
-        <li :class="{active:index == isActive}" v-on:click="btn(index)" v-for="(movie,index) in movies" >{{movie}}</li>
-    </ul>
+    <input type="text" v-model="message">
+    <p>{{message}}</p>
+    <div id="text">{{message}}</div>
 </div>
 <script type="text/javascript">
     // 创建vue实例
-    const vm = new Vue({
-        el:'#test',
+    const vm = new Vue({ // 配置对象
+        el:'#test', // element 选择器
         data:{
-            movies:['海尔兄弟','火影忍者','进击的巨人'],
-            isActive:false,
-        },
-        methods:{
-            btn:function (index) {
-                this.isActive = index
-            },
-        },
+            message:'Hello Vue'
+        }
     })
 </script>
 

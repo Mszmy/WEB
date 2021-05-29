@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-html指令使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<!--
+v-html
+   - 如果直接用{{}}的话，则会将 html代码直接展现。但其实想要的是用户可以去点击，因此就需要解析html代码
+   - 因此就使用 v-html
+-->
+<div id="test">
+    <h2>{{link}}</h2>
+    <h2 v-html="link"></h2>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            link:'<a href="https://www.baidu.com">百度一下</a>'
+        }
+    })
+</script>
+
+</body>
+</html>

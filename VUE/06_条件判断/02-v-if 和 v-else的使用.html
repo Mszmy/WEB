@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if 和 v-else的使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <h2 v-if='isshow'>{{message}}</h2>
+    <h2 v-else>{{message1}}</h2>
+
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'isshow true 时，显示我',
+            isshow:false,
+            message1:'isshow 为false 时，显示我',
+        },
+    })
+</script>
+
+</body>
+</html>

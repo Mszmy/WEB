@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for 遍历对象</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+<!--    只获取 value-->
+    <p>[1]value</p>
+    <ul>
+        <li v-for="(value) in info">{{value}}</li>
+    </ul>
+
+<!--    value 和 key-->
+    <p>[2]value 和 key</p>
+    <ul>
+        <li v-for="(value,key) in info">{{key}} - {{value}}</li>
+    </ul>
+
+<!--    value 和 key 和 index-->
+    <p>[3]value 和 key 和 index</p>
+    <ul>
+        <li v-for="(value,key,index) in info">{{index}} - {{key}} - {{value}}</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+           info:{
+               name:'why',
+               age:18,
+               height:1.88
+           }
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on的基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <p>{{counter}}</p>
+
+<!--    <button v-on:click="increment"> + </button>-->
+
+<!--    语法糖  ---- 也就是缩写@-->
+    <button @click="increment"> + </button>
+    <button @click="decrement"> -  </button>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            counter:0,
+        },
+        methods:{
+            increment(){
+                this.counter++
+            },
+            decrement(){
+                if(this.counter == 0) this.counter =0
+                else this.counter--
+            },
+        },
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if的基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <h2 v-if='isshow'>{{message}}</h2>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+            isshow:true,
+        }
+    })
+</script>
+
+</body>
+</html>

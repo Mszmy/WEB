@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show的基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+<!--
+    v-if 当条件为false时，包含v-if元素指令的元素 根本不会存在与DOM中。
+        当其改成true时，再重新创建一个
+
+    v-show 当条件为false时，它会给元素加一个行内样式 display:none ，其实元素还是存在在DOM中的
+-->
+    <h2 v-if="isshow" id="if">{{message}}</h2>
+    <h2 v-show="isshow" id="show">{{message}}</h2>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+            isshow:true,
+        }
+    })
+</script>
+
+</body>
+</html>

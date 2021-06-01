@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on的参数问题</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <button @click="btn1click">按钮1</button>
+
+<!--    方法定义时，需要event对象，同时又需要其他参数-->
+<!--    在调用方式，如何手动的获取到浏览器参数的event对象 --> 用$event-->
+    <button @click="btn2click(1,2,$event)">按钮2</button>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+        },
+        methods:{
+            btn1click(){
+                console.log('AAA')
+            },
+            btn2click(a,b){
+                alert(a+b)
+                alert(event)
+            },
+        },
+    })
+</script>
+
+</body>
+</html>

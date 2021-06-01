@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on 修饰符</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+<!--    1  .stop 修饰符-->
+    <div @click="divClick">
+        aaaaaa
+<!--        会发生冒泡 -> 事件冒泡：从子元素开始，一直走到父元素-->
+<!--        <button @click="btnclick">按钮</button>-->
+
+<!--       .stop > 阻止事件冒泡 -->
+        <button @click.stop="btnclick">按钮</button>
+    </div>
+
+
+<!--    2  .prevent 修饰符-->
+    <br>
+    <form action="baidu">
+<!--        会自动跳转，也就是自动执行了默认事件-->
+<!--        <input type="submit" value="提交" @click="submitclick">-->
+
+<!--        .prevent 阻止默认事件的发生-->
+        <input type="submit" value="提交" @click.prevent="submitclick">
+    </form>
+
+<!--    3 监听某个键盘的键帽-->
+
+<!--   按下一个就触发一次 -->
+<!--    <input type="text" @keyup="keyup">-->
+
+<!--  只有当按下enter健时，才会被触发-->
+    <input type="text" @keyup.enter="keyup">
+
+    <br>
+<!--    4 .once 修饰符使用-->
+<!--   点击一次触发一次-->
+<!--    <button @click="btn2click">once按钮</button>-->
+
+<!--    只会触发一次，触发一次后再点击无反应-->
+    <button @click.once="btn2click">once按钮</button>
+
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+        },
+        methods:{
+            divClick(){
+                alert('divClick')
+            },
+            btnclick() {
+                alert('btnclick')
+            },
+            submitclick(){
+                alert('submitclick')
+            },
+            keyup(){
+                alert('keyup')
+            },
+            btn2click(){
+                alert('btn2click')
+            },
+        },
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model修饰符的使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <!-- 1 修饰符 lazy  --- 为防止双向绑定太频繁，等用户全部输完之后再更新-->
+    <input type="text" v-model.lazy="message">
+    <h2>{{message}}</h2>
+
+    <!-- 2 修饰符 number  ---将输入框输入的内容自动转换成数字类型-->
+    <input type="text" v-model.number="age">
+    <h2>{{typeof age}}</h2>
+
+    <!-- 2 修饰符 trim  ---可以过滤内容左右两边的空格-->
+    <input type="text" v-model.trim="name">
+    <h2>{{name}}</h2>
+</div>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+            age:111,
+            name:'  zzz  '
+        }
+    })
+</script>
+
+</body>
+</html>

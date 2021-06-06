@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册组件语法糖</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+</div>
+<script type="text/javascript">
+    // 1 全局组件的语法糖
+    Vue.component('cpn1',{
+        template:`
+        <div>
+            <h2>我是标题</h2>
+            <p>我是内容</p>
+            <cpn2></cpn2>
+        </div>
+        `
+    })
+
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+        },
+        // 2 构建局部组件的语法糖
+        components:{
+            'cpn2':{
+                template:`
+                <div>
+                    <h2>我是标题2</h2>
+                    <p>我是内容2</p>
+                </div>
+                `
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

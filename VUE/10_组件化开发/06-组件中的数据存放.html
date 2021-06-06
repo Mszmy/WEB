@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件中的数据存放</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+   <cpn></cpn>
+</div>
+<template id="cpnc">
+    <div>
+        <h2>{{message}}</h2>
+    </div>
+</template>
+
+<script type="text/javascript">
+    Vue.component('cpn',{
+        template: '#cpnc',
+        //组件中的 data 属性存放自己的数据 --- 但其data必须是一个函数 --- 而且这个函数需要返回一个对象，对象内部存放数据
+        data(){
+            return {
+                message:'hello vue'
+            }
+        }
+    })
+    const vm = new Vue({
+        el:'#test',
+        data:{
+        }
+    })
+</script>
+
+</body>
+</html>

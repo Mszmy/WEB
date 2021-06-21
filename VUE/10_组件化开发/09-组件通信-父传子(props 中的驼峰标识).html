@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件通信--父传子 propos中的驼峰标识</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    {{message}}
+    <cpn :c-info="info" :child-my-message="message"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <p>{{cInfo}}</p>
+        <p>{{childMyMessage}}</p>
+    </div>
+</template>
+<script type="text/javascript">
+    const cpn = {
+        template:'#cpn',
+        props:{
+            cInfo:{
+                type:Object,
+                default(){
+                    return {}
+                }
+            },
+            childMyMessage:{
+                type:String,
+                default:' '
+            }
+        },
+
+
+    }
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+            info:{
+                name:'zzz',
+                age:'18',
+                sex:'famle',
+            },
+        },
+        components:{
+            'cpn':cpn
+        }
+    })
+</script>
+</body>
+</html>

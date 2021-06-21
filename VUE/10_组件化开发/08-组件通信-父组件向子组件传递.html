@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件通信--父组件向子组件传递</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<!--父-->
+<div id="test">
+    {{message}}
+    <cpn :cmovies="movies" :cmessages="message"></cpn>
+</div>
+
+<!--子-->
+<template id="cpn">
+    <div>
+        <p>{{cmovies}}</p>
+        <p>{{cmessages}}</p>
+    </div>
+</template>
+<script type="text/javascript">
+    <!--  父传子通过props  -->
+    const cpn = {
+        template:'#cpn',
+        //数组形式
+        // props:['cmovies','cmessages'],
+
+        //对象形式
+        props:{
+            // 1 类型限制
+            cmovies:Array,
+            // cmessages:String,
+
+            // 2 提供一些默认值  ----- 当没有:cmessages="message" 这样赋值时，则用到时显示默认值
+            cmessages:{
+                type:String,
+                default:'aaaaaaa',
+                required:true,  // 必须传的参数
+            }
+        },
+    }
+
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+            movies:['海王','海贼王','海尔兄弟']
+        },
+        components:{
+            'cpn':cpn,
+        }
+    })
+</script>
+
+</body>
+</html>

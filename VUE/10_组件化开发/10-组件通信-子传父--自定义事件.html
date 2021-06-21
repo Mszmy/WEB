@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件通信--子传父 --- 自定义事件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<!-- 父组件模版  -->
+<div id="test" >
+    {{message}}
+<!--    2 父组件 用 v-on 监听子组件的事件-->
+    <cpn @itemclick="cpnClick"></cpn>
+</div>
+
+<!-- 子组件模版  -->
+<template id="cpn">
+    <div>
+        <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+</template>
+<script type="text/javascript">
+    // 1 子组件
+    const cpn = {
+        template:'#cpn',
+        data(){
+            return{
+                categories:[
+                    {id:'aaa',name:'热门推荐'},
+                    {id:'bbb',name:'手机数码'},
+                    {id:'ccc',name:'家用家电'},
+                    {id:'ddd',name:'电脑办公'}
+                ]
+            }
+        },
+        methods:{
+            btnClick(item) {
+                // 1 子组件 用 $emit 发射事件  --- 自定义事件
+                this.$emit('itemclick',item)
+            },
+        }
+    }
+    // 2 父组件
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+        },
+        components:{
+            'cpn':cpn,
+        },
+        methods:{
+            cpnClick(item){
+                console.log(item.id)
+            }
+        }
+    })
+</script>
+</body>
+</html>

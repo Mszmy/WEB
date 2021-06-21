@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot 具名插槽的基本使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <cpn><span slot="left">我把左边改了</span></cpn>
+    <br/>
+
+    <cpn><button slot="center">我把中间改了</button></cpn>
+    <br/>
+
+    <cpn><em slot="right">我把右边改了</em></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <slot name="left"><span>左边</span></slot>
+        <slot name="center"><span>中间</span></slot>
+        <slot name="right"><span>右边</span></slot>
+    </div>
+</template>
+<script type="text/javascript">
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+        },
+        components:{
+            cpn:{
+                template:'#cpn',
+            }
+        },
+    })
+</script>
+
+</body>
+</html>

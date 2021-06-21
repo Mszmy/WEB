@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件访问--父访问子 ---children -- refs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="test">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="aaa"></cpn>
+    <button @click="btnClick">按钮</button>
+</div>
+
+<template id="cpn">
+    <div>
+        <p>我是子组件</p>
+    </div>
+</template>
+<script type="text/javascript">
+    // 创建vue实例
+    const vm = new Vue({
+        el:'#test',
+        data:{
+            message:'hello',
+        },
+        methods:{
+            btnClick(){
+                //-------- 1 $children  -----------
+                // console.log(this.$children)
+                // this.$children[0].showMessage();
+                // console.log(this.$children[0].name);
+
+                //循环全部展示出来
+                // for(let c of this.$children){
+                //     console.log(c.name)
+                //     c.showMessage(); // 调用执行 showMessage函数
+                // }
+
+                //-------- 2 $refs  对象类型，默认为一个空对象，必须要在子组件上通过添加ref属性才不为空-----------
+                // console.log(this.$refs) // 默认refs 这个为 空
+                console.log(this.$refs.aaa.name)
+            },
+        },
+        components:{
+            cpn:{
+                template:'#cpn',
+                data(){
+                    return {
+                        name:'我是子组件的name',
+                    }
+                },
+                methods:{
+                    showMessage(){
+                        console.log('showMessage');
+                    }
+                },
+            },
+
+        },
+    })
+</script>
+</body>
+</html>
